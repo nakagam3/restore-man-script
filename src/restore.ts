@@ -3,10 +3,13 @@ import path = require("path");
 import { outputFileSync, readdirpSync, File, loadFileSync, makeEmptyFile } from "./files.core";
 import { applyRestoreRule, IRestoreTemplateSet } from "./restore.services";
 
-export async function makeRestoreScript(inputpath: string): Promise<string[]> {
+export async function makeRestoreScript(
+  inputpath: string,
+  _static: string = "./static"
+): Promise<string[]> {
   const targetFilePathList: string[] = await findTargeFilePath(inputpath);
 
-  const RestoreTemplate: IRestoreTemplateSet = loadAllTemplate();
+  const RestoreTemplate: IRestoreTemplateSet = loadAllTemplate(_static);
   const restoreFileList = targetFilePathList.flatMap((filepath: string) => {
     return applyRestoreRule(filepath, RestoreTemplate);
   });
@@ -19,11 +22,11 @@ export async function findTargeFilePath(filepath: string): Promise<string[]> {
   return findFiles.filter(f => f.match(/[.](SQL|sql)$/g));
 }
 
-export function loadAllTemplate(): IRestoreTemplateSet {
+export function loadAllTemplate(basedir: string): IRestoreTemplateSet {
   return {
-    BACKUP: loadFileSync(path.resolve("./static/template/Restore/${name}-BACKUP-${version}.sql")),
-    RESTORE: loadFileSync(path.resolve("./static/template/Restore/${name}-RESTORE-${version}.sql")),
-    SP: loadFileSync(path.resolve("./static/template/Restore/SP-${version}.txt"))
+    BACKUP: loadFileSync(path.resolve(basedir, "template/Restore/${name}-BACKUP-${version}.sql")),
+    RESTORE: loadFileSync(path.resolve(basedir, "template/Restore/${name}-RESTORE-${version}.sql")),
+    SP: loadFileSync(path.resolve(basedir, "template/Restore/SP-${version}.txt"))
   };
 }
 

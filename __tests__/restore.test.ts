@@ -69,7 +69,7 @@ describe("再帰的にリストア対象のファイルを探索する処理", (
 
 describe("テンプレートの読み込み", () => {
   test("ファイル名", async () => {
-    const tmpl: IRestoreTemplateSet = loadAllTemplate();
+    const tmpl: IRestoreTemplateSet = loadAllTemplate("./static");
 
     expect(tmpl.BACKUP.name).toBe("${name}-BACKUP-${version}.sql");
     expect(tmpl.RESTORE.name).toBe("${name}-RESTORE-${version}.sql");

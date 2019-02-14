@@ -1,0 +1,3 @@
+CREATE TABLE ${name}_BK${version}JV NOLOGGING PARALLEL
+AS SELECT * FROM ${name}
+/

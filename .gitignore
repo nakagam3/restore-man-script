@@ -1,0 +1,5 @@
+node_modules
+.cache
+.DS_Store
+__tests_data__/**/0_PREPARE
+__tests_data__/**/9_RESTORE

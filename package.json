@@ -1,0 +1,35 @@
+{
+  "name": "restore-man-script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/restore.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "dev": "parcel watch  --target node src/restore.ts",
+    "build": "parcel build --target node src/restore.ts",
+    "test": "jest",
+    "prettier": "prettier --write src/**/* __tests__/**/*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^11.9.0",
+    "jest": "^24.1.0",
+    "parcel-bundler": "^1.11.0",
+    "prettier": "^1.16.4",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.3.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@types/recursive-readdir": "^2.2.0",
+    "iconv-lite-ts": "0.0.1",
+    "moment": "^2.24.0",
+    "recursive-readdir": "^2.2.2"
+  }
+}
